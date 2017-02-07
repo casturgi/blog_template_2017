@@ -1,0 +1,31 @@
+<div class="container">
+  
+<h1 class="pull-left">Insert Default Title Here</h1>
+
+
+</div>
+<div class="row">
+   <% @posts.each do |post| %>
+   <div class="col-md-6">
+     <div class="panel panel-default">
+       <div class="panel-heading">
+           <%= link_to post.title, post %>
+       </div>
+       <div class="panel-body">
+           <p><%= post.blog_entry %></p>
+           by <%= post.user.username %><br>
+           <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %>
+       </div>
+       <div class="panel-footer">
+           <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
+           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+       </div>
+     </div>
+   </div>
+ <% end %>
+</div>
+
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

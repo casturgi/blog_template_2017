@@ -1,0 +1,17 @@
+<% current_user.posts.each do |post| %>
+<div class="col-md-12">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <%= link_to post.title, post %>
+        </div>
+        <div class="panel-body">
+            <p><span class="posted-at"><%= post.created_at.strftime('%m/%d/%Y at %l:%M%p') %></span></p>
+            <p><%= post.blog_entry[0..150] %>...[<%= link_to "READ MORE", post %>]</p>
+        </div>
+        <div class="panel-footer">
+            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
+            <%= link_to 'Destroy', post, method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-dander" %>
+        </div>
+    </div>
+</div>
+<% end %>

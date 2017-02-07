@@ -9,6 +9,52 @@
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+  <!--     <a class="navbar-brand" href="http://localhost:3000/"><img src="https://images.bigcartel.com/theme_images/20283673/Official-LOGO.png" style="height: 45px; margin-top: -13px;"></a> -->
+    
+      <%= link_to image_tag("https://images.bigcartel.com/theme_images/20283673/Official-LOGO.png"), root_path, {:style=>'height: 45px;', :class => "css_class"} %>
+    
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      
+
+      </ul>
+      <form class="navbar-form navbar-left">
+
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "My Posts", your_posts_path %></li>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to  "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	  <div class="container">
+<!--       <div class="pull-right" style="margin-top: 22px;">
+        <% if user_signed_in? %>
+          <p style="margin-top: 36px;">Welcome <%= current_user.username %></p>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+          <%= link_to  "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </div> -->
+	    <%= yield %>
+	  </div>
   </body>
 </html>
